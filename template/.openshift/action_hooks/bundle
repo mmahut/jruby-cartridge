@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export GEM_HOME=${OPENSHIFT_JRUBY_DIR}gems
+export GEM_PATH=${OPENSHIFT_JRUBY_DIR}gems
+
+pushd $OPENSHIFT_REPO_DIR
+
+if [ -f Gemfile ]; then
+  ${OPENSHIFT_JRUBY_DIR}versions/${OPENSHIFT_JRUBY_VERSION}/bin/jruby ${OPENSHIFT_JRUBY_DIR}gems/bin/bundle install --deployment
+else
+  echo "Application does not use Bundler to manage gems."
+fi
+
+popd

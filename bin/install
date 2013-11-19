@@ -1,0 +1,3 @@
+#!/bin/bash
+
+${OPENSHIFT_JRUBY_DIR}bin/control build > ${OPENSHIFT_JRUBY_DIR}log/install.log

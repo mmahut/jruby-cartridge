@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export GEM_HOME=${OPENSHIFT_JRUBY_DIR}gems
+export GEM_PATH=${OPENSHIFT_JRUBY_DIR}gems
+
+${OPENSHIFT_JRUBY_DIR}versions/${OPENSHIFT_JRUBY_VERSION}/bin/jruby ${OPENSHIFT_JRUBY_DIR}gems/bin/puma \
+  -d \
+  --dir "$OPENSHIFT_REPO_DIR" \
+  -b "tcp://$OPENSHIFT_JRUBY_HTTP_IP:$OPENSHIFT_JRUBY_HTTP_PORT" \
+  --pidfile "$OPENSHIFT_JRUBY_PID" \
+  -e "production" \
+  &> ${OPENSHIFT_JRUBY_LOG_DIR}jruby.log
