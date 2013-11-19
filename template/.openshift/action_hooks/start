@@ -3,9 +3,11 @@
 export GEM_HOME=${OPENSHIFT_JRUBY_DIR}gems
 export GEM_PATH=${OPENSHIFT_JRUBY_DIR}gems
 
+export PATH=${OPENSHIFT_JRUBY_DIR}versions/${OPENSHIFT_JRUBY_VERSION}/bin:$PATH
+
 cd "${OPENSHIFT_REPO_DIR}"
 
-${OPENSHIFT_JRUBY_DIR}versions/${OPENSHIFT_JRUBY_VERSION}/bin/jruby ${OPENSHIFT_JRUBY_DIR}gems/bin/bundle exec  ${OPENSHIFT_JRUBY_DIR}gems/bin/puma \
+jruby ${OPENSHIFT_JRUBY_DIR}gems/bin/bundle exec  ${OPENSHIFT_JRUBY_DIR}gems/bin/puma \
   -d \
   --dir "$OPENSHIFT_REPO_DIR" \
   -b "tcp://$OPENSHIFT_JRUBY_HTTP_IP:$OPENSHIFT_JRUBY_HTTP_PORT" \
