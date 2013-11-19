@@ -3,6 +3,8 @@
 export GEM_HOME=${OPENSHIFT_JRUBY_DIR}gems
 export GEM_PATH=${OPENSHIFT_JRUBY_DIR}gems
 
+cd "${OPENSHIFT_REPO_DIR}"
+
 ${OPENSHIFT_JRUBY_DIR}versions/${OPENSHIFT_JRUBY_VERSION}/bin/jruby -S bundle exec ${OPENSHIFT_JRUBY_DIR}gems/bin/puma \
   -d \
   --dir "$OPENSHIFT_REPO_DIR" \
