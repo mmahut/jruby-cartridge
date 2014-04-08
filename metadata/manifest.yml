@@ -51,10 +51,15 @@ Endpoints:
     Private-Port-Name: HTTP_PORT
     Private-Port:      8080
     Public-Port-Name:  PROXY_HTTP_PORT
+    Protocols:
+      - http
+      - ws
     Mappings:
       - Frontend:      ""
         Backend:       ""
-        Options:       { websocket: false }
+        Options:       
+          websocket:   true
       - Frontend:      "/health"
         Backend:       ""
-        Options:       { health: true }
+        Options:       
+          health:      true
