@@ -4,10 +4,10 @@ Cartridge-Short-Name: JRUBY
 Cartridge-Version: '0.0.1'
 Cartridge-Vendor: mjelen
 
-Display-Name: JRuby 1.7.4
+Display-Name: JRuby 1.7.11
 Description: "The Ruby Programming Language on the JVM"
 
-Version: '1.7.4'
+Version: '1.7.11'
 Website: http://www.jruby.org
 
 Categories:
@@ -16,7 +16,7 @@ Categories:
   - ruby
 
 Provides:
-  - jruby-1.7.4
+  - jruby-1.7.11
   - jruby
 
 Scaling:
@@ -51,10 +51,15 @@ Endpoints:
     Private-Port-Name: HTTP_PORT
     Private-Port:      8080
     Public-Port-Name:  PROXY_HTTP_PORT
+    Protocols:
+      - http
+      - ws
     Mappings:
       - Frontend:      ""
         Backend:       ""
-        Options:       { websocket: false }
+        Options:       
+          websocket:   true
       - Frontend:      "/health"
         Backend:       ""
-        Options:       { health: true }
+        Options:       
+          health:      true
