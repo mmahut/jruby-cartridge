@@ -57,7 +57,7 @@ function update() {
   echo "Updating JRuby."
 
   if [ "$OPENSHIFT_JRUBY_VERSION" == "" ];then
-    OPENSHIFT_JRUBY_VERSION=`curl http://jruby.org/download | ruby -e "s=ARGF.read;x=/Current Release: JRuby (\d\.\d\.\d+)/m.match(s);puts x[1]"`
+    OPENSHIFT_JRUBY_VERSION=`curl http://jruby.org/download | ruby -e "s=ARGF.read;x=/(1\.7\.\d+)/m.match(s);puts x[1]"`
   fi
 
   mkdir -p ${OPENSHIFT_JRUBY_DIR}versions
