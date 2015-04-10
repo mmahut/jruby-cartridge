@@ -69,6 +69,9 @@ function update() {
   tar xf jruby.tar.gz
   rm -rf jruby.tar.gz
 
+  # workaround a GEM bug where GEM tries to bind to 0.0.0.0
+  sed -i s/\"0.0.0.0\"/ENV[\\\'OPENSHIFT_JRUBY_HTTP_IP\\\']/g jruby-$OPENSHIFT_JRUBY_VERSION/lib/ruby/*/resolv.rb
+
   mv jruby-$OPENSHIFT_JRUBY_VERSION $OPENSHIFT_JRUBY_VERSION
 
   echo "$OPENSHIFT_JRUBY_VERSION" > ${OPENSHIFT_JRUBY_DIR}env/OPENSHIFT_JRUBY_VERSION
@@ -78,8 +81,7 @@ function update() {
   export GEM_PATH=${OPENSHIFT_JRUBY_DIR}gems
 
   mkdir -p $GEM_PATH
-  
-  #jruby -S gem install --verbose --backtrace --debug puma bundler sinatra > ${OPENSHIFT_JRUBY_DIR}log/bundler.log
+  jruby -S gem install --verbose --backtrace --debug puma bundler sinatra > ${OPENSHIFT_JRUBY_DIR}log/bundler.log
 }
 
 # Validate input
