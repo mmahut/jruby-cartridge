@@ -73,12 +73,12 @@ function update() {
 
   echo "$OPENSHIFT_JRUBY_VERSION" > ${OPENSHIFT_JRUBY_DIR}env/OPENSHIFT_JRUBY_VERSION
 
-  mkdir -p $GEM_PATH
-
   export PATH="${OPENSHIFT_JRUBY_DIR}versions/${OPENSHIFT_JRUBY_VERSION}/bin:$PATH"
   export GEM_HOME=${OPENSHIFT_JRUBY_DIR}gems
   export GEM_PATH=${OPENSHIFT_JRUBY_DIR}gems
 
+  mkdir -p $GEM_PATH
+  
   jruby -S gem install puma bundler sinatra > ${OPENSHIFT_JRUBY_DIR}log/bundler.log
 }
 
