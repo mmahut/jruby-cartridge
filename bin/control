@@ -79,7 +79,7 @@ function update() {
 
   mkdir -p $GEM_PATH
   
-  jruby -S gem install puma bundler sinatra #> ${OPENSHIFT_JRUBY_DIR}log/bundler.log
+  jruby -S gem install --verbose --backtrace --debug puma bundler sinatra #> ${OPENSHIFT_JRUBY_DIR}log/bundler.log
 }
 
 # Validate input
